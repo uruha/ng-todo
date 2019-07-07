@@ -15,25 +15,29 @@ export class TodoComponent implements OnInit {
     private todoService: TodoService,
     private formBuilder: FormBuilder
   ) {
-    this.todoList = this.todoService.getTodo();
     this.todoForm = this.formBuilder.group({
       title: '',
       detail: ''
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getTodolist();
+  }
+
+  getTodolist() {
+    this.todoList = this.todoService.getTodo();
+  }
 
   deleteTodo(todoId) {
     console.log(todoId);
     this.todoService.removeTodo(todoId);
-    this.todoList = this.todoService.getTodo();
+    this.getTodolist();
   }
 
   onSubmit(todo) {
     console.log('Your order has been submitted', todo);
     this.todoService.addTodo(todo);
     this.todoForm.reset();
-    console.log(this.todoList);
   }
 }
