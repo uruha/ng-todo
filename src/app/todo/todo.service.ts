@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Todo {
+  id?: number;
   title: string;
   detail: string;
 }
@@ -12,8 +13,11 @@ export class TodoService {
 
   constructor(private http: HttpClient) {}
 
-  addTodo(todo) {
-    this.todoList.push(todo);
+  addTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(
+      'https://5d25e705eeb36400145c5771.mockapi.io/api/v1/todo',
+      todo
+    );
   }
   getTodo(): Observable<Todo[]> {
     return this.http.get<Todo[]>(
