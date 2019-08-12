@@ -4,8 +4,13 @@ import { TodoComponent } from './todo/todo.component';
 
 const routes: Routes = [
   {
+    path: 'todo',
+    loadChildren: () => import('./todo/todo.module').then(mod => mod.TodoModule)
+  },
+  {
     path: '',
-    component: TodoComponent
+    redirectTo: '',
+    pathMatch: 'full'
   }
 ];
 
