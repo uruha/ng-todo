@@ -14,7 +14,6 @@ export class TodoService {
   constructor(private http: HttpClient) {}
 
   addTodo(todo: Todo): Observable<Todo> {
-    // this.todoList.push(todo);
     return this.http.post<Todo>(
       'https://5d25e705eeb36400145c5771.mockapi.io/api/v1/todo',
       todo
