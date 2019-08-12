@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+export interface Todo {
+  title: string;
+  detail: string;
+}
 @Injectable()
 export class TodoService {
-  todoList = [
-    {
-      title: 'Hello Todo 😎',
-      detail: 'create todo list'
-    }
-  ];
+  todoList: Todo[];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   addTodo(todo) {
     this.todoList.push(todo);
   }
-  getTodo() {
-    return this.todoList;
+  getTodo(): Todo[] {
+    return this.http.get<Todo[]>(
+      'https://5d25e705eeb36400145c5771.mockapi.io/api/v1/todo'
+    );
   }
   removeTodo(todoId) {
     this.todoList = this.todoList.filter((_, index) => index !== todoId);

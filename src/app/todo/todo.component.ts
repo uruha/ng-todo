@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { TodoService } from './todo.service';
+import { TodoService, Todo } from './todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,7 +8,7 @@ import { TodoService } from './todo.service';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  todoList;
+  todoList: Todo[];
   todoForm;
 
   constructor(
