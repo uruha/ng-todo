@@ -36,7 +36,7 @@ export class TodoComponent implements OnInit {
   }
 
   onSubmit(todo) {
-    console.log('Your order has been submitted', todo);
+    // console.log('Your order has been submitted', todo);
     this.todoService.addTodo(todo).subscribe(() => {
       this.getTodolist();
     });
