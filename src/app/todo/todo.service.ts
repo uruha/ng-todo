@@ -25,7 +25,6 @@ export class TodoService {
     );
   }
   removeTodo(todoId): Observable<Todo> {
-    // this.todoList = this.todoList.filter((_, index) => index !== todoId);
     return this.http.delete<Todo>(
       `https://5d25e705eeb36400145c5771.mockapi.io/api/v1/todo/${todoId}`
     );
