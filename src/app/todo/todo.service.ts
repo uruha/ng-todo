@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface Todo {
   title: string;
@@ -14,7 +15,7 @@ export class TodoService {
   addTodo(todo) {
     this.todoList.push(todo);
   }
-  getTodo(): Todo[] {
+  getTodo(): Observable<Todo[]> {
     return this.http.get<Todo[]>(
       'https://5d25e705eeb36400145c5771.mockapi.io/api/v1/todo'
     );
