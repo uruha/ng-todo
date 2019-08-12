@@ -26,7 +26,9 @@ export class TodoComponent implements OnInit {
   }
 
   getTodolist() {
-    this.todoService.getTodo().subscribe(data => (this.todoList = data));
+    this.todoService
+      .getTodo()
+      .subscribe(data => (this.todoList = data.reverse()));
   }
 
   deleteTodo(todoId) {
@@ -36,7 +38,9 @@ export class TodoComponent implements OnInit {
 
   onSubmit(todo) {
     console.log('Your order has been submitted', todo);
-    this.todoService.addTodo(todo);
+    this.todoService.addTodo(todo).subscribe(() => {
+      this.getTodolist();
+    });
     this.todoForm.reset();
   }
 }

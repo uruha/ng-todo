@@ -12,11 +12,11 @@
     <button type="submit">Registed</button>
 </form>
 
-<ul *ngFor="let todo of todoList; index as todoId">
+<ul *ngFor="let todo of todoList">
     <li>
         <h4>{{ todo.title }}</h4>
         <p>{{ todo.detail }}</p>
-        <button (click)="deleteTodo(todoId)">
+        <button (click)="deleteTodo(todo.id)">
             Delete
         </button>
     </li>
