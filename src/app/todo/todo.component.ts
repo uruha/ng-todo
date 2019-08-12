@@ -30,7 +30,6 @@ export class TodoComponent implements OnInit {
   }
 
   deleteTodo(todoId) {
-    console.log(todoId);
     this.todoService.removeTodo(todoId);
     this.getTodolist();
   }
